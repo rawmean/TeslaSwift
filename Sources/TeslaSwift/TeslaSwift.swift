@@ -779,11 +779,14 @@ extension TeslaSwift {
             completion(Result.success(self.token!))
         } else {
             self.cleanToken()
-            if let email = self.email, let password = self.password {
-                authenticate(email: email, password: password, completion: completion)
-            } else {
-                completion(Result.failure(TeslaError.authenticationRequired))
-            }
+            completion(Result.failure(TeslaError.authenticationRequired))
+
+            // Ramin from github
+//            if let email = self.email, let password = self.password {
+//                authenticate(email: email, password: password, completion: completion)
+//            } else {
+//                completion(Result.failure(TeslaError.authenticationRequired))
+//            }
         }
 	}
 	
